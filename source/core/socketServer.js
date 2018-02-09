@@ -31,4 +31,8 @@ module.exports = class socketServer {
             });
         })
     }
+
+    broadcastTo(room, event, data) {
+        this.server.to(room).emit(event, data);
+    }
 }

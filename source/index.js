@@ -8,6 +8,7 @@ module.exports = class server {
     launch() {
         this.server.init();
         console.log(`Server listening on port ${this.config.port}!`);
+        setTimeout(()=>this.server.broadcastTo('lobby', 't', 'Hello this is the server!'), 1000)
     }
 };
 
