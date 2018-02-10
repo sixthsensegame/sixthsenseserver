@@ -16,17 +16,14 @@ module.exports = class socketServer {
         this.server.on('connection', socket => {
             socket.join('lobby', () => {
                 this.lobby.push(socket);
-                this.server.to('lobby').emit('t', 'hello');
+                this.broadcastTo('lobby', 'message', 'hello');
             });
 
             socket.on('disconnect', data => {
-                socket.join('lobby', () => {
-                    this.server.to('test').emit('t', 'goodbye');
-                });
                 this.lobby.splice(this.lobby.indexOf(socket), 1);
             });
 
-            socket.on('r', data => {
+            socket.on('message', data => {
                 console.log(data)
             });
         })
