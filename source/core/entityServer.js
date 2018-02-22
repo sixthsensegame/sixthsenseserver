@@ -16,4 +16,8 @@ module.exports = class entityServer {
         if(entities.length === 0) this.entities.delete(type);
         else this.entities.set(type, entities)
     }
+
+    getEntities() {
+        return this.entities
+    }
 };
