@@ -1,4 +1,7 @@
 const io = require('socket.io');
+const log = message => {
+    console.log('[SocketServer] '+message)
+};
 module.exports = class socketServer {
     constructor(config) {
         this.config = config;
@@ -24,7 +27,7 @@ module.exports = class socketServer {
             });
 
             socket.on('message', data => {
-                console.log(data)
+                log(data)
             });
         })
     }
